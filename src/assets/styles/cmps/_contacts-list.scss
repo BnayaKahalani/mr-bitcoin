@@ -1,0 +1,36 @@
+.contacts-list {
+
+  ul {
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+    gap: 5px;
+    padding: 15px 0;
+    
+    li {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      list-style-type: none;
+      border: 1.5px solid $clr-green;
+      border-radius: 8px;
+      padding: 10px;
+      color: $clr-dark;
+ 
+
+      .contacts-preview-btns {
+        display: flex;
+        justify-content: space-between;
+
+        .btn-remove {
+          background-color: rgb(172, 37, 37);
+        }
+
+        .link-details {
+          text-decoration: none;
+          color: $clr-pale;
+        }
+      }
+    }
+
+  }
+}

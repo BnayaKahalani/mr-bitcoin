@@ -1,0 +1,42 @@
+.app-header {
+  padding-inline: 10px;
+  background-color: $clr-dark;
+  font-family: "roboto-bold";
+  padding: 10px;
+  color: $clr-light;
+
+  .app-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+
+      h1 {
+        text-decoration: none;
+        color: $clr-light;
+      }
+    }
+
+    .info-container {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+
+      .rate {
+        padding: 10px;
+        border: $clr-light solid 1px;
+        border-radius: 8px;
+      }
+    }
+
+    nav > * {
+      text-decoration: none;
+      color: $clr-light;
+      margin-left: 15px;
+    }
+  }
+}
