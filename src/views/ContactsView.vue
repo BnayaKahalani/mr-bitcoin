@@ -1,15 +1,32 @@
 <template>
-  <ContactsList @remove-contact="onRemoveContact" :contacts="contacts" />
+  <ContactsList
+    v-if="contacts"
+    :contacts="contactsForDisplay"
+    @remove-contact="onRemoveContact"
+    @onSetFilter="onSetFilter"
+  />
 </template>
 
 <script>
-import { contactService } from "../services/contactService"
-import ContactsList from "../components/ContactsList.vue"
+import { contactService } from '../services/contactService'
+import ContactsList from '../components/ContactsList.vue'
 export default {
   data() {
     return {
-      contacts: [],
+      contacts: null,
     }
+  },
+  async created() {
+    const loggedInUser = this.$store.getters.loggedInUser
+    if (!loggedInUser) {
+      this.$router.push('/login')
+    }
+    this.contacts = await this.$store.dispatch({ type: 'loadContacts' })
+  },
+  computed: {
+    contactsForDisplay() {
+      return this.$store.getters.contactsForDisplay
+    },
   },
   methods: {
     onRemoveContact(contactId) {
@@ -19,12 +36,12 @@ export default {
       )
       this.contacts.splice(idx, 1)
     },
+    onSetFilter(filterBy) {
+      this.$store.commit({ type: 'setFilterBy', filterBy })
+    },
   },
   components: {
     ContactsList,
-  },
-  async created() {
-    this.contacts = await contactService.getContacts()
   },
 }
 </script>

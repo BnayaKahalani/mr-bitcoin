@@ -4,15 +4,18 @@
       <div class="logo">
         <RouterLink to="/"><h1 class="logo">Mr. Bitcoin</h1></RouterLink>
         <img :src="imgURL" alt="bitcoin-img" />
-        <p class="username">Hello, {{ loggedInUser.name.split(" ")[0] }} </p>
+        <p class="username">
+          Hello, {{ loggedInUser?.username?.split(' ')[0] || 'Guest' }}
+        </p>
       </div>
       <nav class="nav-container">
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/contacts">Contacts</RouterLink>
         <RouterLink to="/stats">Statistics</RouterLink>
+        <RouterLink to="/login">login</RouterLink>
       </nav>
       <div class="info-container">
-        <div class="custom-select">
+        <div class="custom-select" v-if="currencyOptions">
           <select @change="getCurrExchangeRate" v-model="currency">
             <option
               v-for="currencyOption in currencyOptions"
@@ -30,26 +33,23 @@
 </template>
 
 <script>
-import { userService } from "../services/userService"
-import { bitcoinService } from "../services/bitcoinService"
+import { bitcoinService } from '../services/bitcoinService'
 export default {
   data() {
     return {
-      loggedInUser: null,
       bitcoinRate: null,
-      currency: "USD",
+      currency: 'USD',
       currencyOptions: [],
     }
   },
   async created() {
-    this.getLoggedInUser(),
-      await this.getCurrExchangeRate(),
-      await this.getCurrencyOptions()
+    await this.getCurrExchangeRate()
+    await this.getCurrencyOptions()
   },
   methods: {
-    getLoggedInUser() {
-      this.loggedInUser = userService.getLoggedInUser()
-    },
+    // getLoggedInUser() {
+    //   this.loggedInUser = userService.getLoggedInUser()
+    // },
     async getCurrExchangeRate() {
       this.bitcoinRate = await bitcoinService.getRate(this.currency)
     },
@@ -58,11 +58,14 @@ export default {
     },
   },
   computed: {
+    loggedInUser() {
+      return this.$store.getters.loggedInUser
+    },
     currRate() {
       return `Bitcoin/${this.bitcoinRate.symbol} ${this.bitcoinRate.last}`
     },
     imgURL() {
-      return new URL("../assets/imgs/logo.ico", import.meta.url).href
+      return new URL('../assets/imgs/logo.ico', import.meta.url).href
     },
   },
 }

@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { contactService } from "../services/contactService"
+import { contactService } from '../services/contactService'
 export default {
   data() {
     return {
@@ -32,19 +32,23 @@ export default {
     }
   },
   async created() {
-    console.log("created")
+    console.log('created')
     const _id = this.$route.params._id
     this.contact = await contactService.getContactById(_id)
   },
-    methods: {
-      onRemoveContact(contactId) {
-        console.log('contactId:', contactId)
-        this.$emit("remove-contact", contactId)
-      },
+  methods: {
+    async onRemoveContact(contactId) {
+      console.log('contactId', contactId)
+      await this.$store.dispatch({ type: 'removeContact', contactId })
+      this.$router.push(`/contacts`)
     },
+    onEditContact(contactId) {
+      this.$router.push(`/contacts/edit/${contactId}`)
+    },
+  },
   computed: {
     getImgUrl() {
-      console.log("contact:", this.contact)
+      console.log('contact:', this.contact)
       return `https://robohash.org/${this.contact._id}`
     },
   },

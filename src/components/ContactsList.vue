@@ -2,8 +2,8 @@
   <section class="contacts-list">
     <div class="list-uppersection-container">
       <h1>Transfer to...</h1>
-      <ContactsFilter />
-      <button class="btn">Add Contact</button>
+      <ContactsFilter @filter="onSetFilter" />
+      <RouterLink to="/contacts/edit" class="btn">Add Contact</RouterLink>
     </div>
     <ul>
       <TransitionGroup name="list" tag="ul">
@@ -11,9 +11,9 @@
           <ContactPreview :contact="contact" />
           <div class="contacts-preview-btns">
             <button class="btn btn-details">
-              <RouterLink class="link-details" :to="`/contacts/${contact._id}`"
-                >Details</RouterLink
-              >
+              <RouterLink class="link-details" :to="`/contacts/${contact._id}`">
+                Details
+              </RouterLink>
             </button>
           </div>
         </li>
@@ -23,8 +23,8 @@
 </template>
 
 <script>
-import ContactPreview from "./ContactPreview.vue"
-import ContactsFilter from "./ContactsFilter.vue"
+import ContactPreview from './ContactPreview.vue'
+import ContactsFilter from './ContactsFilter.vue'
 export default {
   props: {
     contacts: {
@@ -34,7 +34,10 @@ export default {
   },
   methods: {
     onRemoveContact(contactId) {
-      this.$emit("remove-contact", contactId)
+      this.$emit('remove-contact', contactId)
+    },
+    onSetFilter(filterBy) {
+      this.$emit('onSetFilter', filterBy)
     },
   },
   components: { ContactPreview, ContactsFilter },

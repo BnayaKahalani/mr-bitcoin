@@ -3,7 +3,8 @@ import HomeView from '../views/HomeView.vue'
 import ContactsView from '../views/ContactsView.vue'
 import ContactDetails from '../views/ContactDetails.vue'
 import StatsView from '../views/StatsView.vue'
-import ContactsEdit from '../views/ContactEdit.vue'
+import ContactEdit from '../views/ContactEdit.vue'
+import AuthView from '../views/AuthView.vue'
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -12,29 +13,34 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: HomeView,
     },
     {
       path: '/contacts',
       name: 'contacts',
-      component: ContactsView
+      component: ContactsView,
     },
     {
       path: '/contacts/:_id',
       name: 'details',
-      component: ContactDetails
+      component: ContactDetails,
     },
     {
       path: '/contacts/edit/:_id?',
       name: 'edit',
-      // component: ContactEdit
+      component: ContactEdit,
     },
     {
       path: '/stats',
       name: 'statistics',
-      component: StatsView
-    }
-  ]
+      component: StatsView,
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: AuthView,
+    },
+  ],
 })
 
 export default router

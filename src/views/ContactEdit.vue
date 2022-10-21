@@ -1,37 +1,48 @@
 <template>
-  <div v-if="contact" class="contact-edit-container">
-    <h1>{{ name }}</h1>
-    <div class="input-edit">
-      <input class="input-name" type="text" v-model="name" />
+  <div v-if="contactToEdit" class="contact-edit-container">
+    <div class="input-container">
+      <span>Name:</span>
+      <input class="input-name" type="text" v-model="contactToEdit.name" />
+      <span> Email:</span>
+      <input class="input-name" type="text" v-model="contactToEdit.email" />
+      <span>Phone:</span>
+      <input class="input-name" type="text" v-model="contactToEdit.phone" />
+    </div>
+    <div class="btn-container">
       <button @click="onSaveContant" class="button green">Save</button>
-      <RouterLink :to="`/contact/${contact._id}`">
+      <RouterLink to="/contacts">
         <button class="button red">Cancel</button>
       </RouterLink>
     </div>
-
-    <!-- <div class="contact-edit-container add" v-else> -->
-      <div class="input-container">
-        <span>Name:</span>
-        <input class="input-name" type="text" v-model="name" />
-        <span> Email:</span>
-        <input class="input-name" type="text" v-model="email" />
-        <span>Phone:</span>
-        <input class="input-name" type="text" v-model="phone" />
-      </div>
-      <div class="btn-container">
-        <RouterLink to="/contact">
-          <button @click="onSaveContant" class="button green">Save</button>
-        </RouterLink>
-        <RouterLink to="/contact">
-          <button class="button red">Cencel</button>
-        </RouterLink>
-      </div>
-    </div>
+  </div>
   <!-- </div> -->
 </template>
 
 <script>
-export default {}
+import { contactService } from '../services/contactService'
+export default {
+  name: 'ContactEdit',
+  data() {
+    return {
+      contactToEdit: null,
+    }
+  },
+  async created() {
+    const { _id } = this.$route.params
+    this.contactToEdit = _id
+      ? await contactService.getContactById(_id)
+      : contactService.getEmptyContact()
+  },
+  methods: {
+    async onSaveContant() {
+      await this.$store.dispatch({
+        type: 'saveContact',
+        contactToSave: this.contactToEdit,
+      })
+      this.$router.push('/contacts')
+    },
+  },
+}
 </script>
 
 <style></style>
