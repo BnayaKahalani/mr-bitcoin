@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Fasthand&display=swap');
+
 .app-header {
   padding-inline: 10px;
   background-color: $clr-dark;
@@ -14,6 +16,8 @@
       display: flex;
       align-items: center;
       gap: 0.5em;
+      font-family: 'Fasthand', cursive;
+      font-size: larger;
 
       h1 {
         text-decoration: none;
@@ -26,6 +30,18 @@
       align-items: center;
       gap: 0.5em;
 
+      .custom-select {
+        position: relative;
+
+        select {
+          border-radius: 8px;
+          padding: 10px;
+          border: $clr-light solid 1px;
+          background-color: $clr-white;
+          color: $clr-dark;
+        }
+      }
+
       .rate {
         padding: 10px;
         border: $clr-light solid 1px;
@@ -33,10 +49,19 @@
       }
     }
 
-    nav > * {
-      text-decoration: none;
-      color: $clr-light;
-      margin-left: 15px;
+    nav {
+      display: flex;
+      gap: 15px;
+      justify-self: center;
+
+      a {
+        text-decoration: none;
+        color: $clr-light;
+
+        &.router-active {
+          text-shadow: 0px 0px 5px $clr-light; 
+        }
+      }
     }
   }
 }

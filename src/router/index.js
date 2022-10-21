@@ -3,9 +3,11 @@ import HomeView from '../views/HomeView.vue'
 import ContactsView from '../views/ContactsView.vue'
 import ContactDetails from '../views/ContactDetails.vue'
 import StatsView from '../views/StatsView.vue'
+import ContactsEdit from '../views/ContactEdit.vue'
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
+  linkActiveClass: 'router-active',
   routes: [
     {
       path: '/',
@@ -18,9 +20,14 @@ const router = createRouter({
       component: ContactsView
     },
     {
-      path: '/contacts:_id?',
+      path: '/contacts/:_id',
       name: 'details',
       component: ContactDetails
+    },
+    {
+      path: '/contacts/edit/:_id?',
+      name: 'edit',
+      // component: ContactEdit
     },
     {
       path: '/stats',

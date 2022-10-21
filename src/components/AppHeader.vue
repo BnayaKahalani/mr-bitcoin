@@ -2,8 +2,9 @@
   <header class="app-header main-layout">
     <div class="app-header-container">
       <div class="logo">
-        <RouterLink to="/"><h1>Mr. Bitcoin</h1></RouterLink>
-        <img :src="imgURL" alt="bitcoin-img">
+        <RouterLink to="/"><h1 class="logo">Mr. Bitcoin</h1></RouterLink>
+        <img :src="imgURL" alt="bitcoin-img" />
+        <p class="username">Hello, {{ loggedInUser.name.split(" ")[0] }} </p>
       </div>
       <nav class="nav-container">
         <RouterLink to="/">Home</RouterLink>
@@ -11,7 +12,17 @@
         <RouterLink to="/stats">Statistics</RouterLink>
       </nav>
       <div class="info-container">
-        <p class="username">Hello,{{ loggedInUser.name }}!</p>
+        <div class="custom-select">
+          <select @change="getCurrExchangeRate" v-model="currency">
+            <option
+              v-for="currencyOption in currencyOptions"
+              :key="currencyOption"
+              :value="currencyOption"
+            >
+              {{ currencyOption }}
+            </option>
+          </select>
+        </div>
         <p class="rate" v-if="bitcoinRate">{{ currRate }}</p>
       </div>
     </div>
@@ -51,9 +62,8 @@ export default {
       return `Bitcoin/${this.bitcoinRate.symbol} ${this.bitcoinRate.last}`
     },
     imgURL() {
-      return new URL("../assets/imgs/logo.ico", import.meta.url)
-        .href
-    }
+      return new URL("../assets/imgs/logo.ico", import.meta.url).href
+    },
   },
 }
 </script>

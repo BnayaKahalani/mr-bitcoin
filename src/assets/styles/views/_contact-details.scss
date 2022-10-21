@@ -1,0 +1,32 @@
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 25px;
+
+  img {
+    border: 1.5px solid $clr-green;
+    border-radius: 8px;
+    margin-top: 15px;
+  }
+
+  .contacts-preview-btns {
+    display: flex;
+    margin: 10px 0;
+    gap: 10px;
+
+    .btn-remove {
+      background-color: rgb(172, 37, 37);
+    }
+
+    .btn-edit {
+      min-width: 65px;
+    }
+  }
+
+  .link-back {
+    text-decoration: none;
+    color: $clr-pale;
+  }
+}

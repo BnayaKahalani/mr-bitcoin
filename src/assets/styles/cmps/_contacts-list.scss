@@ -1,5 +1,21 @@
 .contacts-list {
 
+  .list-uppersection-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+
+    h1{
+      color: $clr-dark;
+    }
+  }
+
+  .filter {
+    display: flex;
+    justify-content: center;
+  }
+
   ul {
     display: grid;
     grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
@@ -15,15 +31,12 @@
       border-radius: 8px;
       padding: 10px;
       color: $clr-dark;
+      gap: 10px;
  
 
       .contacts-preview-btns {
         display: flex;
-        justify-content: space-between;
-
-        .btn-remove {
-          background-color: rgb(172, 37, 37);
-        }
+        justify-content: flex-end;
 
         .link-details {
           text-decoration: none;
