@@ -1,19 +1,21 @@
 // SETUP
-@import "./setup/variables";
-@import "./setup/typography";
-@import "./setup/mixins";
+@import './setup/variables';
+@import './setup/typography';
+@import './setup/mixins';
 
 // BASE
-@import "./base/base";
-@import "./base/layout";
+@import './base/base';
+@import './base/layout';
 
 // COMPONENTS
-@import "./cmps/app-header";
-@import "./cmps/app-footer";
-@import "./cmps/contacts-list";
-@import "./cmps/contacts-preview";
-@import "./cmps/contacts-filter";
+@import './cmps/app-header';
+@import './cmps/app-footer';
+@import './cmps/contacts-list';
+@import './cmps/contacts-preview';
+@import './cmps/contacts-filter';
 
 // VIEWS
-@import "./views/home-view";
-@import "./views/contact-details";
+@import './views/home-view';
+@import './views/contact-details-view';
+@import './views/contact-edit-view';
+@import './views/auth-view';

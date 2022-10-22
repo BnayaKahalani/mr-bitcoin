@@ -9,9 +9,9 @@
       <input class="input-name" type="text" v-model="contactToEdit.phone" />
     </div>
     <div class="btn-container">
-      <button @click="onSaveContant" class="button green">Save</button>
+      <button @click="onSaveContant" class="btn">Save</button>
       <RouterLink to="/contacts">
-        <button class="button red">Cancel</button>
+        <button class="btn">Cancel</button>
       </RouterLink>
     </div>
   </div>

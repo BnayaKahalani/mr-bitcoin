@@ -1,5 +1,5 @@
 <template>
-  <footer>
+  <footer class="main-layout">
     <span>© CoffeeToffee 2022</span>
   </footer>
 </template>

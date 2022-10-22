@@ -1,0 +1,38 @@
+.auth {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 15px;
+  color: $clr-dark;
+
+  .auth-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    button {
+      align-self: center;
+    }
+
+    input {
+      background-color: $clr-pale;
+      border: 2px $clr-green solid;
+      color: $clr-dark;
+      border-radius: 8px;
+      padding: 10px;
+      outline: none;
+    }
+  }
+}
+
+.logged-in {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 15px;
+  color: $clr-dark;
+  gap: 10px;
+}

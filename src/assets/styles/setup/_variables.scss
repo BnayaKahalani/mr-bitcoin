@@ -1,8 +1,8 @@
 // COLOR PALETTE
-$clr-dark: #06283D;
-$clr-green: #256D85;
-$clr-light: #47B5FF;
-$clr-pale: #DFF6FF;
+$clr-dark: #06283d;
+$clr-green: #256d85;
+$clr-light: #47b5ff;
+$clr-pale: white;
 $clr-black: #222222;
 $clr-white: #fff;
 
@@ -14,6 +14,6 @@ $break-narrow: 600px;
 $break-normal: 960px;
 $break-wide: 1200px;
 
-$padded-break-narrow: $break-narrow + $layoutPadding *2;
-$padded-break-normal: $break-normal + $layoutPadding *2;
-$padded-break-wide: $break-wide + $layoutPadding *2;
+$padded-break-narrow: $break-narrow + $layoutPadding * 2;
+$padded-break-normal: $break-normal + $layoutPadding * 2;
+$padded-break-wide: $break-wide + $layoutPadding * 2;

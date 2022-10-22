@@ -14,22 +14,19 @@ a {
 }
 
 .btn {
-  padding: 6px 15px;
+  padding: 9px 15px;
   background-color: $clr-green;
   border-radius: 5px 25px;
   color: $clr-pale;
   border: none;
   transition: opacity 0.2s;
+  font-size: 1rem;
 
   &:hover {
     cursor: pointer;
     opacity: 0.7;
   }
-  
 }
 .charts-container {
   background-color: transparent;
 }
-
-
-  
