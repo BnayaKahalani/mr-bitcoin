@@ -27,3 +27,9 @@ npm run dev
 ```sh
 npm run build
 ```
+
+
+- click - go to parent
+- parent - user store
+- user store - user service - contact store ? - contact service
+- view.

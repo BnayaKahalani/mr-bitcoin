@@ -2,11 +2,26 @@
   <div v-if="contactToEdit" class="contact-edit-container">
     <div class="input-container">
       <span>Name:</span>
-      <input class="input-name" type="text" v-model="contactToEdit.name" />
+      <input
+        class="input-name"
+        type="text"
+        v-model="contactToEdit.name"
+        placeholder="Enter your name..."
+      />
       <span> Email:</span>
-      <input class="input-name" type="text" v-model="contactToEdit.email" />
+      <input
+        class="input-name"
+        type="text"
+        v-model="contactToEdit.email"
+        placeholder="Enter your email..."
+      />
       <span>Phone:</span>
-      <input class="input-name" type="text" v-model="contactToEdit.phone" />
+      <input
+        class="input-name"
+        type="text"
+        v-model="contactToEdit.phone"
+        placeholder="Enter your phone..."
+      />
     </div>
     <div class="btn-container">
       <button @click="onSaveContant" class="btn">Save</button>

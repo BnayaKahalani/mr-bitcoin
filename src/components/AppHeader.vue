@@ -4,16 +4,17 @@
       <div class="logo">
         <RouterLink to="/"><h1 class="logo">Mr. Bitcoin</h1></RouterLink>
         <img :src="imgURL" alt="bitcoin-img" />
-        <p class="username">
-          Hello, {{ loggedInUser?.username?.split(' ')[0] || 'Guest' }}
-        </p>
+        <RouterLink to="/login">
+          <p class="username">
+            Hello, {{ loggedInUser?.username?.split(' ')[0] || 'Guest' }}
+          </p>
+          <p class="username" v-if="loggedInUser">Your balance: {{ loggedInUser.balance }}</p>
+        </RouterLink>
       </div>
-      <nav class="nav-container">
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/contacts">Contacts</RouterLink>
-        <RouterLink to="/stats">Statistics</RouterLink>
-        <RouterLink to="/login">login</RouterLink>
-      </nav>
+
+      <div class="menu__btn" @click="toggleMenu(true)">☰</div>
+      <NavLinks @toggleMenu="toggleMenu" :isOpen="isOpen" />
+
       <div class="info-container">
         <div class="custom-select" v-if="currencyOptions">
           <select @change="getCurrExchangeRate" v-model="currency">
@@ -34,12 +35,15 @@
 
 <script>
 import { bitcoinService } from '../services/bitcoinService'
+import NavLinks from './NavLinks.vue'
+
 export default {
   data() {
     return {
       bitcoinRate: null,
       currency: 'USD',
       currencyOptions: [],
+      isOpen: false,
     }
   },
   async created() {
@@ -47,19 +51,22 @@ export default {
     await this.getCurrencyOptions()
   },
   methods: {
-    // getLoggedInUser() {
-    //   this.loggedInUser = userService.getLoggedInUser()
-    // },
     async getCurrExchangeRate() {
       this.bitcoinRate = await bitcoinService.getRate(this.currency)
     },
     async getCurrencyOptions() {
       this.currencyOptions = await bitcoinService.getCurrencyOptions()
     },
+    toggleMenu(state) {
+      this.isOpen = state
+    },
   },
   computed: {
     loggedInUser() {
       return this.$store.getters.loggedInUser
+    },
+    userBalance() {
+      return this.$store.getters.userBalance
     },
     currRate() {
       return `Bitcoin/${this.bitcoinRate.symbol} ${this.bitcoinRate.last}`
@@ -68,7 +75,10 @@ export default {
       return new URL('../assets/imgs/logo.ico', import.meta.url).href
     },
   },
+  components: {
+    NavLinks,
+  }
+ 
 }
 </script>
 
-<style></style>

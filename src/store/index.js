@@ -3,9 +3,7 @@ import { contactModule } from './modules/contactMoudle'
 import { userModule } from './modules/userModule'
 
 export const store = createStore({
-  state() {
-    return {}
-  },
+  state() {},
   getters: {},
   mutations: {},
   actions: {},

@@ -15,7 +15,7 @@ export const contactModule = {
       let filteredContacts = JSON.parse(JSON.stringify(contacts))
       if (filterBy.text) {
         filteredContacts = contacts.filter((contact) =>
-          contact.name.includes(filterBy.text)
+          contact.name.toLowerCase().includes(filterBy.text.toLowerCase())
         )
       }
 

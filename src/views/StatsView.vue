@@ -23,6 +23,9 @@ export default {
         async getMarketPriceHistory() {
             const { values } = await bitcoinService.getMarketPriceHistory();
             this.bitcoinPrices = values;
+        },
+        increase() {
+            this.$store.commit({type: 'increase'})
         }
     },
     computed: {

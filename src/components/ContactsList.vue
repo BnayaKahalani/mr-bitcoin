@@ -10,6 +10,11 @@
         <li v-for="contact in contacts" :key="contact._id">
           <ContactPreview :contact="contact" />
           <div class="contacts-preview-btns">
+            <button class="btn btn-transfer">
+              <RouterLink class="link-details" :to="`/contacts/${contact._id}`">
+                transfer
+              </RouterLink>
+            </button>
             <button class="btn btn-details">
               <RouterLink class="link-details" :to="`/contacts/${contact._id}`">
                 Details

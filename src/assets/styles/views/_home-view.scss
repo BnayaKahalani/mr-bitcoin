@@ -6,12 +6,16 @@
   text-align: center;
   padding: 5%;
 
+  img {
+    max-width: 75%;
+  }
+
   .hero-contacts-btn {
     width: fit-content;
     font-size: 2rem;
     text-decoration: none;
     margin: auto;
-    padding: 15px;
+    padding: 25px;
     animation: hero-btn 2s ease 0s infinite alternate forwards;
   }
 
@@ -19,7 +23,7 @@
     0% {
       box-shadow: 0 0 0 0 $clr-green;
     }
-  
+
     100% {
       box-shadow: 0 0 20px 0px $clr-green;
     }

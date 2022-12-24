@@ -35,4 +35,11 @@
   padding-top: 15px;
   color: $clr-dark;
   gap: 10px;
+
+  .transactions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
 }

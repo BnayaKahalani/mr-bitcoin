@@ -7,6 +7,10 @@
     <p>{{ contact.email }}</p>
     <p>{{ contact.phone }}</p>
 
+    <Transfer :user="user" @onTransfer="onTransfer"/>
+    
+
+
     <div class="contacts-preview-btns">
       <button class="btn btn-remove" @click="onRemoveContact(contact._id)">
         Remove
@@ -25,6 +29,8 @@
 
 <script>
 import { contactService } from '../services/contactService'
+import Transfer from '../components/Transfer.vue'
+
 export default {
   data() {
     return {
@@ -32,7 +38,6 @@ export default {
     }
   },
   async created() {
-    console.log('created')
     const _id = this.$route.params._id
     this.contact = await contactService.getContactById(_id)
   },
@@ -42,16 +47,29 @@ export default {
       await this.$store.dispatch({ type: 'removeContact', contactId })
       this.$router.push(`/contacts`)
     },
+    async onTransfer(amount) {
+      const transaction = {
+        amount,
+        to: this.contact._id
+      }
+      await this.$store.dispatch({type: 'onTransfer', transaction})
+      // await this.$store.dispatch({type: 'updateContact', amount})
+    },
     onEditContact(contactId) {
       this.$router.push(`/contacts/edit/${contactId}`)
     },
   },
   computed: {
     getImgUrl() {
-      console.log('contact:', this.contact)
       return `https://robohash.org/${this.contact._id}`
     },
+    user() {
+      return this.$store.getters.loggedInUser
+    }
   },
+  components: {
+    Transfer
+  }
 }
 </script>
 
