@@ -1,35 +1,14 @@
-# mr-bitcoin
+# Mr. Bitcon - A Fully-responsive Transaction App
 
-This template should help get you started developing with Vue 3 in Vite.
+[Click here to see the result.](https://bnayakahalani.github.io/mr-bitcoin/#/)
 
-## Recommended IDE Setup
+Tools I used: Vue, Vuex & Sass. 
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+Here are some photos of the final product:
 
 
-- click - go to parent
-- parent - user store
-- user store - user service - contact store ? - contact service
-- view.
+## What I Learned from this Project?
+
+This project happened to ba a great opportunity to practice and advance my knowledge and famaliarity with Vue as a framework and Vuex as a state management tool. It also helped me hone my Sass skills and making sure the app is fully-responsive.
+
+You are more than welcome to continue following my projects on GitHub, with many more to come!
